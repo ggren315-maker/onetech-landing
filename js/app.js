@@ -323,6 +323,88 @@ async function submitLead(data) {
   return body;
 }
 
+const INSULATION_W = { good: 0.06, avg: 0.08, poor: 0.10 };
+let pickInsulation = 'avg';
+
+function requiredPowerKw(area, ins = pickInsulation) {
+  return Math.round(area * (INSULATION_W[ins] || 0.08) * 10) / 10;
+}
+
+function recommendByArea(area, ins = pickInsulation) {
+  const required = requiredPowerKw(area, ins);
+  const sorted = [...PRODUCTS].sort((a, b) => a.power - b.power);
+  const fits = sorted.filter(p => p.power >= required * 0.92);
+  const primary = fits[0] || sorted[sorted.length - 1];
+  const idx = sorted.findIndex(p => p.id === primary.id);
+
+  const items = [{ product: primary, tag: 'Оптимально', main: true }];
+  if (idx > 0) items.push({ product: sorted[idx - 1], tag: 'Економніше', main: false });
+  const next = sorted[idx + 1];
+  if (next && next.id !== primary.id) items.push({ product: next, tag: 'З запасом', main: false });
+
+  return {
+    required,
+    items: items.slice(0, 3),
+    undersized: primary.power < required,
+    maxPower: sorted[sorted.length - 1].power,
+  };
+}
+
+function pickCardHTML(item) {
+  const p = item.product;
+  const title = shortName(p.name);
+  return `
+    <article class="pick-card ${item.main ? 'pick-card-main' : ''}">
+      <span class="pick-tag">${item.tag}</span>
+      <div class="pick-card-brand">${BRANDS[p.brand]}</div>
+      <h4>${title}</h4>
+      <div class="pick-card-meta">${p.power} кВт · ${formatPrice(p.price)}</div>
+      <div class="pick-card-actions">
+        <a href="product.html?id=${p.id}" class="btn btn-ghost btn-sm">Деталі</a>
+        <button type="button" class="btn btn-primary btn-sm pick-order-btn" data-id="${p.id}">Замовити</button>
+      </div>
+    </article>`;
+}
+
+function updatePickRecommendations() {
+  const area = parseFloat(document.getElementById('saveArea')?.value) || 120;
+  const { required, items, undersized, maxPower } = recommendByArea(area);
+  const insLabel = { good: 'добра', avg: 'середня', poor: 'слабка' }[pickInsulation];
+
+  const summary = document.getElementById('pickSummary');
+  const cards = document.getElementById('pickCards');
+  if (!summary || !cards) return;
+
+  let text = `Для <strong>${area} м²</strong> (${insLabel} теплоізоляція) рекомендована потужність — <strong>${required} кВт</strong>.`;
+  if (undersized && required > maxPower) {
+    text += ` Максимальна модель у каталозі — <strong>${maxPower} кВт</strong>; для такої площі може знадобитися кілька блоків — передзвонимо та порахуємо.`;
+  }
+  summary.innerHTML = text;
+
+  cards.innerHTML = items.map(pickCardHTML).join('');
+  cards.querySelectorAll('.pick-order-btn').forEach(btn => {
+    btn.addEventListener('click', () => openOrder(+btn.dataset.id));
+  });
+
+  const orderBtn = document.getElementById('pickOrderBtn');
+  if (orderBtn) {
+    const main = items.find(i => i.main)?.product;
+    orderBtn.onclick = () => { if (main) openOrder(main.id); };
+  }
+}
+
+function initPickCalculator() {
+  document.getElementById('pickInsulation')?.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#pickInsulation .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      pickInsulation = chip.dataset.ins || 'avg';
+      calcSavings();
+    });
+  });
+  document.getElementById('saveArea')?.addEventListener('input', calcSavings);
+}
+
 function calcSavings() {
   const area = parseFloat(document.getElementById('saveArea')?.value) || 120;
   const gas = Math.round(area * 42 * 5);
@@ -336,6 +418,7 @@ function calcSavings() {
   document.querySelector('.bar-fill.gas').style.width = (gas / max * 100) + '%';
   document.querySelector('.bar-fill.el').style.width = '100%';
   document.querySelector('.bar-fill.hp').style.width = (hp / max * 100) + '%';
+  updatePickRecommendations();
 }
 
 function initFAQ() {
@@ -369,7 +452,6 @@ function initNav() {
   });
   document.getElementById('search')?.addEventListener('input', renderCatalog);
   document.getElementById('sort')?.addEventListener('change', renderCatalog);
-  document.getElementById('saveArea')?.addEventListener('input', calcSavings);
   document.getElementById('productModal')?.addEventListener('click', e => {
     if (e.target.id === 'productModal') closeModal();
   });
@@ -440,6 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderMosaic();
   renderKit();
   initHeroSlider();
+  initPickCalculator();
   calcSavings();
   initFAQ();
   initForm();

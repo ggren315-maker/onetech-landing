@@ -192,14 +192,22 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="section-label">Калькулятор</div>
-        <h2 class="section-title">Скільки заощадите?</h2>
-        <p class="section-desc">Порівняння витрат на опалення за 5 місяців.</p>
+        <h2 class="section-title">Підбір за площею та економія</h2>
+        <p class="section-desc">Вкажіть площу — покажемо, яка потужність потрібна і які моделі підходять.</p>
       </div>
       <div class="savings-wrap reveal">
         <div>
           <div class="form-row">
             <label for="saveArea">Площа будинку, м²</label>
-            <input type="number" id="saveArea" value="120" min="40" max="400">
+            <input type="number" id="saveArea" value="120" min="40" max="400" step="10">
+          </div>
+          <div class="form-row">
+            <label>Теплоізоляція</label>
+            <div class="pick-insulation" id="pickInsulation">
+              <button type="button" class="chip" data-ins="good">Добра</button>
+              <button type="button" class="chip active" data-ins="avg">Середня</button>
+              <button type="button" class="chip" data-ins="poor">Слабка</button>
+            </div>
           </div>
           <div class="savings-bars">
             <div class="bar-item"><label><span>Газовий котел</span><span id="saveGas">—</span></label><div class="bar-track"><div class="bar-fill gas"></div></div></div>
@@ -211,8 +219,15 @@
           <div class="section-label">Ваша економія</div>
           <div class="savings-num" id="saveTotal">—</div>
           <p style="color:var(--ink-soft)">на сезон порівняно з газом</p>
-          <a href="#catalog" class="btn btn-blue" style="margin-top:24px">Обрати насос</a>
+          <button type="button" class="btn btn-blue" id="pickOrderBtn" style="margin-top:24px">Замовити підібрану модель</button>
         </div>
+      </div>
+      <div class="pick-panel reveal" id="pickPanel">
+        <div class="pick-header">
+          <h3>Рекомендовані моделі</h3>
+          <p id="pickSummary">—</p>
+        </div>
+        <div class="pick-cards" id="pickCards"></div>
       </div>
     </div>
   </section>
