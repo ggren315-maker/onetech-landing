@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог теплових насосів — OneTech</title>
+  <meta name="description" content="Каталог інверторних теплових насосів Aquaviva, Aquajoy, Fairland — 24 моделі з цінами та характеристиками.">
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="catalog">
+
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero page-hero-compact">
+      <div class="container page-hero-inner reveal">
+        <div class="section-label">Каталог</div>
+        <h1>Моделі теплових насосів</h1>
+        <p class="page-hero-lead">24 інверторні системи від офіційних брендів. Ціни оновлюються автоматично.</p>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="catalog-toolbar reveal">
+          <input type="search" class="search-input" id="search" placeholder="Пошук за назвою...">
+          <select class="sort-select" id="sort">
+            <option value="default">За замовчуванням</option>
+            <option value="price-asc">Ціна ↑</option>
+            <option value="price-desc">Ціна ↓</option>
+            <option value="power-asc">Потужність ↑</option>
+            <option value="power-desc">Потужність ↓</option>
+          </select>
+        </div>
+        <div class="filter-tabs reveal">
+          <button class="filter-tab active" data-filter="all">Усі</button>
+          <button class="filter-tab" data-filter="aquaviva">Aquaviva</button>
+          <button class="filter-tab" data-filter="aquajoy-comfort">Comfort</button>
+          <button class="filter-tab" data-filter="aquajoy-plus">Plus</button>
+          <button class="filter-tab" data-filter="fairland">Fairland</button>
+        </div>
+        <div class="products-grid" id="catalogGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <div class="modal-bg" id="productModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 class="section-title" id="modalTitle" style="font-size:1.35rem;margin:0"></h2>
+        <button class="modal-close" aria-label="Закрити">×</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+          <div class="modal-thumbs" id="modalThumbs"></div>
+        </div>
+        <div>
+          <div class="price-row" id="modalPrice"></div>
+          <ul class="modal-specs" id="modalSpecs"></ul>
+          <button class="btn btn-primary btn-block" id="modalOrder">Замовити консультацію</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/layout.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

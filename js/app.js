@@ -60,36 +60,28 @@ let heroTimer;
 
 function cardHTML(p, featured = false) {
   const title = shortName(p.name);
-  const pct = discountPercent(p.price, p.oldPrice);
-  const isHit = p.reviews >= 2 || p.id === 4;
 
   return `
     <article class="product-card reveal ${featured ? 'featured' : ''}" data-id="${p.id}" data-brand="${p.brand}">
-      <div class="product-badges">
-        ${p.sale ? `<span class="badge badge-sale">−${pct}%</span>` : ''}
-        ${isHit ? '<span class="badge badge-hit">Хіт</span>' : ''}
-        ${p.brand === 'aquajoy-plus' ? '<span class="badge badge-new">Premium</span>' : ''}
-      </div>
       <a href="product.html?id=${p.id}" class="product-img">
         <img src="${p.image}" alt="${title}" loading="lazy">
       </a>
       <div class="product-body">
         <div class="product-brand">${BRANDS[p.brand] || p.brand}</div>
-        <h3 class="product-title"><a href="product.html?id=${p.id}" style="text-decoration:none;color:inherit">${title}</a></h3>
+        <h3 class="product-title"><a href="product.html?id=${p.id}">${title}</a></h3>
         <div class="product-meta">
           <span class="meta-chip">${p.power} кВт</span>
+          ${p.sale ? '<span class="meta-chip meta-chip-soft">Спецпропозиція</span>' : ''}
         </div>
-        ${p.reviews ? `<div class="product-rating">★★★★★ (${p.reviews} відгуки)</div>` : ''}
         <div class="product-price-block">
           <div class="price-row">
             <span class="price-now">${formatPrice(p.price)}</span>
             ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
           </div>
-          ${p.oldPrice ? `<span class="price-save">Економія ${formatPrice(p.oldPrice - p.price)}</span>` : ''}
         </div>
         <div class="product-actions">
-          <button class="btn btn-primary btn-sm btn-block order-btn" data-id="${p.id}">Замовити</button>
-          <a href="product.html?id=${p.id}" class="btn btn-outline btn-sm btn-block">Детальніше →</a>
+          <a href="product.html?id=${p.id}" class="btn btn-outline btn-sm btn-block">Характеристики</a>
+          <button class="btn btn-primary btn-sm btn-block order-btn" data-id="${p.id}">Консультація</button>
         </div>
       </div>
     </article>`;
@@ -221,9 +213,16 @@ function clearOrderModel() {
 function openOrder(id) {
   const p = PRODUCTS.find(x => x.id === id);
   if (!p) return;
-  setOrderModel(shortName(p.name));
-  document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
-  document.getElementById('phone')?.focus();
+  const label = shortName(p.name);
+  const onContact = document.body.dataset.page === 'contact';
+
+  if (onContact) {
+    setOrderModel(label);
+    document.getElementById('order')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('phone')?.focus();
+  } else {
+    location.href = `contact.html?order=${id}`;
+  }
 }
 
 function setModalImage(src) {
@@ -438,10 +437,7 @@ function observeReveal() {
   });
 }
 
-function initNav() {
-  document.getElementById('menuBtn')?.addEventListener('click', () => {
-    document.getElementById('nav').classList.toggle('open');
-  });
+function initCatalogNav() {
   document.querySelectorAll('.filter-tab').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
@@ -489,8 +485,8 @@ function initProductPage() {
           <li><span>Доставка</span><span>Безкоштовна</span></li>
           <li><span>Фото</span><span>${gallery.length} зображень</span></li>
         </ul>
-        <button class="btn btn-primary btn-block" id="pgOrder" style="margin-top:20px">Замовити</button>
-        <a href="index.html#catalog" class="card-link" style="display:block;text-align:center;margin-top:14px">← Всі моделі</a>
+        <button class="btn btn-primary btn-block" id="pgOrder" style="margin-top:20px">Консультація</button>
+        <a href="catalog.html" class="card-link" style="display:block;text-align:center;margin-top:14px">← Каталог</a>
       </div>
     </div>`;
 
@@ -503,35 +499,44 @@ function initProductPage() {
   });
 
   document.getElementById('pgOrder').addEventListener('click', () => {
-    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
-    document.getElementById('phone')?.focus();
+    location.href = `contact.html?order=${id}`;
   });
-
-  setOrderModel(title);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.body.dataset.page === 'product') {
-    initProductPage();
-    initForm();
-    return;
-  }
+  const page = document.body.dataset.page || 'home';
+  initLayout(page === 'product' ? 'catalog' : page);
 
-  renderFeatured();
-  renderCatalog();
-  renderMosaic();
-  renderKit();
-  initHeroSlider();
-  initPickCalculator();
-  calcSavings();
-  initFAQ();
-  initForm();
-  initNav();
   observeReveal();
 
-  const showcase = document.getElementById('showcaseImg');
-  if (showcase) showcase.src = SITE_GALLERY.hero[0];
+  if (page === 'home') {
+    renderFeatured();
+    initHeroSlider();
+    bindCards('#featuredGrid');
+  }
 
-  const orderParam = new URLSearchParams(location.search).get('order');
-  if (orderParam) setTimeout(() => openOrder(+orderParam), 500);
+  if (page === 'catalog') {
+    renderCatalog();
+    initCatalogNav();
+    bindCards('#catalogGrid');
+  }
+
+  if (page === 'pick') {
+    initPickCalculator();
+    calcSavings();
+  }
+
+  if (page === 'about') {
+    initFAQ();
+  }
+
+  if (page === 'contact') {
+    initForm();
+    const orderParam = new URLSearchParams(location.search).get('order');
+    if (orderParam) setTimeout(() => openOrder(+orderParam), 300);
+  }
+
+  if (page === 'product') {
+    initProductPage();
+  }
 });

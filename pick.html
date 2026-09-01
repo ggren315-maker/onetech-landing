@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Підбір за площею — OneTech</title>
+  <meta name="description" content="Калькулятор підбору теплового насоса за площею будинку та теплоізоляцією.">
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="pick">
+
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero page-hero-compact">
+      <div class="container page-hero-inner reveal">
+        <div class="section-label">Калькулятор</div>
+        <h1>Підбір за площею</h1>
+        <p class="page-hero-lead">Вкажіть параметри будинку — ми розрахуємо потужність і покажемо підходящі моделі.</p>
+      </div>
+    </section>
+
+    <section class="home-section" id="savings">
+      <div class="container">
+        <div class="savings-wrap reveal">
+          <div>
+            <div class="form-row">
+              <label for="saveArea">Площа будинку, м²</label>
+              <input type="number" id="saveArea" value="120" min="40" max="400" step="10">
+            </div>
+            <div class="form-row">
+              <label>Теплоізоляція</label>
+              <div class="pick-insulation" id="pickInsulation">
+                <button type="button" class="chip" data-ins="good">Добра</button>
+                <button type="button" class="chip active" data-ins="avg">Середня</button>
+                <button type="button" class="chip" data-ins="poor">Слабка</button>
+              </div>
+            </div>
+            <div class="savings-bars">
+              <div class="bar-item"><label><span>Газовий котел</span><span id="saveGas">—</span></label><div class="bar-track"><div class="bar-fill gas"></div></div></div>
+              <div class="bar-item"><label><span>Електрокотел</span><span id="saveEl">—</span></label><div class="bar-track"><div class="bar-fill el"></div></div></div>
+              <div class="bar-item"><label><span>Тепловий насос</span><span id="saveHp">—</span></label><div class="bar-track"><div class="bar-fill hp"></div></div></div>
+            </div>
+          </div>
+          <div class="savings-result">
+            <div class="section-label">Економія за сезон</div>
+            <div class="savings-num" id="saveTotal">—</div>
+            <p style="color:var(--ink-soft)">порівняно з газовим котлом</p>
+            <button type="button" class="btn btn-blue" id="pickOrderBtn" style="margin-top:24px">Замовити підібрану модель</button>
+          </div>
+        </div>
+        <div class="pick-panel reveal" id="pickPanel">
+          <div class="pick-header">
+            <h3>Рекомендовані моделі</h3>
+            <p id="pickSummary">—</p>
+          </div>
+          <div class="pick-cards" id="pickCards"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/layout.js"></script>
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

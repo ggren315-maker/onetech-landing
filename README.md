@@ -1,17 +1,36 @@
-# OneTech — теплові насоси (лендінг + Telegram-бот)
+# OneTech — теплові насоси для дому
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/blueprint/new?repo=https://github.com/ggren315-maker/onetech-landing)
 
-## Швидкий деплой (Render, безкоштовно)
+## Сайт онлайн
 
-1. Натисніть кнопку **Deploy to Render** вище
-2. Увійдіть через GitHub (`ggren315-maker`)
-3. **Deploy Blueprint**
-4. У **Environment** додайте:
-   - `TELEGRAM_BOT_TOKEN`
-   - `TELEGRAM_CHAT_ID`
+| Де | URL | Що працює |
+|----|-----|-----------|
+| **GitHub Pages** | https://ggren315-maker.github.io/onetech-landing/ | Сторінки, каталог, калькулятор |
+| **Render** (рекомендовано) | після деплою | + форма → Telegram, оновлення цін |
 
-Сайт працює 24/7 без вашого ПК.
+> GitHub показує **код** і **статичний сайт**. Посилання `github.com/...` — це репозиторій, не сайт для клієнтів.
+
+## Сторінки
+
+- `index.html` — головна
+- `about.html` — що таке тепловий насос
+- `catalog.html` — каталог
+- `pick.html` — підбір за площею
+- `contact.html` — консультація / форма
+- `product.html?id=N` — картка товару
+
+## GitHub Pages (автоматично)
+
+Після push у `main` сайт з'являється на:
+**https://ggren315-maker.github.io/onetech-landing/**
+
+У репозиторії: **Settings → Pages → Source: GitHub Actions**
+
+## Render (бот Telegram)
+
+1. [Deploy Blueprint](https://dashboard.render.com/blueprint/new?repo=https://github.com/ggren315-maker/onetech-landing)
+2. Environment: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
 
 ## Локально
 
@@ -21,7 +40,3 @@ python server.py
 ```
 
 → http://127.0.0.1:5500
-
-## Репозиторій
-
-https://github.com/ggren315-maker/onetech-landing
