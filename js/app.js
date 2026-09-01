@@ -6,14 +6,17 @@ const BRANDS = {
   other: 'Інше',
 };
 
-const KIT_ITEMS = [
-  { img: SITE_GALLERY.install[0], title: 'Спліт-система', desc: 'Зовнішній + внутрішній блок' },
-  { img: SITE_GALLERY.install[2], title: 'Циркуляційний насос', desc: 'Подача теплоносія в систему' },
-  { img: SITE_GALLERY.install[3], title: 'Буферна ємність', desc: 'Для ГВС та стабільної роботи' },
-  { img: SITE_GALLERY.install[4], title: 'Триходовий клапан', desc: 'Перемикання опалення / ГВС' },
-  { img: SITE_GALLERY.install[5], title: 'Оpори та кріплення', desc: 'Надійне встановлення блоків' },
-  { img: SITE_GALLERY.install[1], title: 'Система управління', desc: 'Пульт, датчики, автоматика' },
-];
+function getKitItems() {
+  if (typeof SITE_GALLERY === 'undefined') return [];
+  return [
+    { img: SITE_GALLERY.install[0], title: 'Спліт-система', desc: 'Зовнішній + внутрішній блок' },
+    { img: SITE_GALLERY.install[2], title: 'Циркуляційний насос', desc: 'Подача теплоносія в систему' },
+    { img: SITE_GALLERY.install[3], title: 'Буферна ємність', desc: 'Для ГВС та стабільної роботи' },
+    { img: SITE_GALLERY.install[4], title: 'Триходовий клапан', desc: 'Перемикання опалення / ГВС' },
+    { img: SITE_GALLERY.install[5], title: 'Оpори та кріплення', desc: 'Надійне встановлення блоків' },
+    { img: SITE_GALLERY.install[1], title: 'Система управління', desc: 'Пульт, датчики, автоматика' },
+  ];
+}
 
 function shortName(full) {
   const m = full.match(/(?:Aquaviva|Aquajoy|Fairland)[^\,]+/);
@@ -44,7 +47,7 @@ function getAllGalleryPhotos() {
     (p.gallery || []).forEach(g => add(g, shortName(p.name), p.id));
   });
 
-  KIT_ITEMS.forEach(k => add(k.img, k.title, null, true));
+  getKitItems().forEach(k => add(k.img, k.title, null, true));
 
   return items;
 }
@@ -146,7 +149,7 @@ function renderMosaic() {
 function renderKit() {
   const el = document.getElementById('kitGrid');
   if (!el) return;
-  el.innerHTML = KIT_ITEMS.map(k => `
+  el.innerHTML = getKitItems().map(k => `
     <div class="kit-card">
       <img src="${k.img}" alt="${k.title}" loading="lazy">
       <div class="kit-card-body"><h4>${k.title}</h4><p>${k.desc}</p></div>
@@ -433,7 +436,23 @@ function initFAQ() {
 
 function observeReveal() {
   document.querySelectorAll('.reveal:not(.show)').forEach(el => {
-    new IntersectionObserver(([e]) => { if (e.isIntersecting) el.classList.add('show'); }, { threshold: 0.08 }).observe(el);
+    const show = () => el.classList.add('show');
+    if (!('IntersectionObserver' in window)) {
+      show();
+      return;
+    }
+    const observer = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        show();
+        observer.disconnect();
+      }
+    }, { threshold: 0.08 });
+    observer.observe(el);
+    // Fallback if observer never fires (e.g. above-the-fold content)
+    requestAnimationFrame(() => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) show();
+    });
   });
 }
 
