@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: onetech
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: PRICE_UPDATE_ENABLED
+        value: "1"
+      - key: PRICE_UPDATE_HOURS
+        value: "6"
+      - key: PRICE_UPDATE_ON_START
+        value: "1"
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: SYNC_SECRET
+        generateValue: true

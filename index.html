@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneTech — Теплові насоси для дому | Безкоштовна доставка</title>
+  <meta name="description" content="OneTech — інверторні теплові насоси Aquaviva, Aquajoy, Fairland. Економія до 75%. Безкоштовна доставка по Україні.">
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="announce">
+    Безкоштовна доставка по Україні · <span>Офіційна гарантія</span>
+  </div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo"><img src="img/logo.png" alt="OneTech"></a>
+      <nav class="nav" id="nav">
+        <a href="#featured">Хіти</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#kit">Комплектація</a>
+        <a href="#reviews">Відгуки</a>
+        <a href="#order">Замовити</a>
+      </nav>
+      <div class="header-right">
+        <a href="tel:0800300144" class="header-phone">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span>0 800 300 144</span>
+        </a>
+        <a href="#order" class="btn btn-primary btn-sm">Замовити</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Меню">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-tag">Інверторні системи опалення</div>
+        <h1>Тепло.<br><em>Без компромісів.</em></h1>
+        <p class="hero-text">Преміальні теплові насоси для приватного будинку. Опалення, гаряча вода та охолодження — одна система, мінімальні витрати.</p>
+        <div class="hero-actions">
+          <a href="#catalog" class="btn btn-primary">Обрати модель</a>
+          <a href="#order" class="btn btn-outline">Безкоштовна консультація</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-pill"><strong>×4</strong><span>ефективність</span></div>
+          <div class="trust-pill"><strong>−25°</strong><span>робочий мороз</span></div>
+          <div class="trust-pill"><strong>25</strong><span>років служби</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-slider" id="heroSlider">
+          <div class="hero-slide active"><img src="" alt="" data-hero-slide></div>
+        </div>
+        <div class="hero-thumbs" id="heroThumbs"></div>
+        <div class="hero-float-card card-top"><strong>−25%</strong> на Aquaviva AVH15S</div>
+        <div class="hero-float-card card-bottom"><strong>COP 4.1</strong> максимальна ефективність</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-strip">
+    <div class="container trust-strip-grid">
+      <div class="trust-item">Безкоштовна доставка</div>
+      <div class="trust-item">Офіційна гарантія</div>
+      <div class="trust-item">Оплата при отриманні</div>
+      <div class="trust-item">Монтаж під ключ</div>
+    </div>
+  </div>
+
+  <section id="featured">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="section-label">Обрані моделі</div>
+        <h2 class="section-title">Колекція 2026</h2>
+        <p class="section-desc">Aquaviva, Aquajoy, Fairland — перевірені бренди з офіційною гарантією.</p>
+      </div>
+      <div class="featured-grid" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <section id="catalog">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-label">Каталог</div>
+        <h2 class="section-title">Усі теплові насоси</h2>
+        <p class="section-desc">24 моделі від перевірених брендів — Aquaviva, Aquajoy, Fairland.</p>
+      </div>
+      <div class="catalog-toolbar reveal">
+        <input type="search" class="search-input" id="search" placeholder="Пошук за назвою...">
+        <select class="sort-select" id="sort">
+          <option value="default">За замовчуванням</option>
+          <option value="price-asc">Ціна ↑</option>
+          <option value="price-desc">Ціна ↓</option>
+          <option value="power-asc">Потужність ↑</option>
+          <option value="power-desc">Потужність ↓</option>
+        </select>
+      </div>
+      <div class="filter-tabs reveal">
+        <button class="filter-tab active" data-filter="all">Усі</button>
+        <button class="filter-tab" data-filter="aquaviva">Aquaviva</button>
+        <button class="filter-tab" data-filter="aquajoy-comfort">Comfort</button>
+        <button class="filter-tab" data-filter="aquajoy-plus">Plus</button>
+        <button class="filter-tab" data-filter="fairland">Fairland</button>
+        <button class="filter-tab" data-filter="sale">Знижки</button>
+      </div>
+      <div class="products-grid" id="catalogGrid"></div>
+    </div>
+  </section>
+
+  <section id="brands" class="brands-section">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="section-label">Бренди</div>
+        <h2 class="section-title">Офіційні виробники</h2>
+      </div>
+      <div class="brands-row reveal">
+        <img src="img/brands/aquaviva.png" alt="Aquaviva">
+        <img src="img/brands/aquajoy.jpg" alt="Aquajoy">
+        <img src="img/brands/fairland.png" alt="Fairland">
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="section-label">Фото</div>
+        <h2 class="section-title">Усі фото</h2>
+        <p class="section-desc">Повна галерея — 24 моделі та комплектація системи.</p>
+        <p class="gallery-count" id="galleryCount"></p>
+      </div>
+      <div class="photo-mosaic reveal" id="photoMosaic"></div>
+    </div>
+  </section>
+
+  <section id="kit" class="kit-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-label">Комплектація</div>
+        <h2 class="section-title">Що входить у систему</h2>
+        <p class="section-desc">Повна сплит-система «повітря–вода» для опалення, ГВС та охолодження.</p>
+      </div>
+      <div class="kit-grid reveal" id="kitGrid"></div>
+    </div>
+  </section>
+
+  <section id="showcase" class="showcase-section">
+    <div class="container showcase-split reveal">
+      <div class="showcase-img"><img id="showcaseImg" src="" alt="Тепловий насос"></div>
+      <div class="showcase-text">
+        <div class="section-label">Як це працює</div>
+        <h2 class="section-title">Тепло з повітря — безкоштовно</h2>
+        <p>Зовнішній блок забирає тепло з повітря, внутрішній передає його у вашу систему опалення або бойлер. На 1 кВт електрики — до 4 кВт тепла.</p>
+        <ul class="showcase-list">
+          <li>Зовнішній блок (компресор + випарник)</li>
+          <li>Внутрішній модуль (конденсатор)</li>
+          <li>Циркуляційний насос + триходовий клапан</li>
+          <li>Пульт управління та датчики</li>
+        </ul>
+        <a href="#catalog" class="btn btn-blue">Переглянути моделі</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits" class="benefits-section">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="section-label">OneTech</div>
+        <h2 class="section-title">Один прилад замість трьох</h2>
+        <p class="section-desc">Котел + кондиціонер + бойлер = один тепловий насос. Екологічно, безпечно, вигідно.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit reveal"><div class="benefit-icon">⚡</div><h3>Енергоефективність</h3><p>У 4 рази ефективніше електрокотла. COP до 4.3 — мінімальні витрати на опалення.</p></div>
+        <div class="benefit reveal"><div class="benefit-icon">🌡️</div><h3>365 днів комфорту</h3><p>Опалення взимку, охолодження влітку, гаряча вода цілий рік.</p></div>
+        <div class="benefit reveal"><div class="benefit-icon">🔇</div><h3>Тиха робота</h3><p>Зовнішній блок на вулиці — комфорт у домі. Шум від 52 дБ.</p></div>
+        <div class="benefit reveal"><div class="benefit-icon">✅</div><h3>Без ризиків</h3><p>Без газу, без займання, без шкідливих викидів. Сервіс 25+ років.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="savings">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-label">Калькулятор</div>
+        <h2 class="section-title">Скільки заощадите?</h2>
+        <p class="section-desc">Порівняння витрат на опалення за 5 місяців.</p>
+      </div>
+      <div class="savings-wrap reveal">
+        <div>
+          <div class="form-row">
+            <label for="saveArea">Площа будинку, м²</label>
+            <input type="number" id="saveArea" value="120" min="40" max="400">
+          </div>
+          <div class="savings-bars">
+            <div class="bar-item"><label><span>Газовий котел</span><span id="saveGas">—</span></label><div class="bar-track"><div class="bar-fill gas"></div></div></div>
+            <div class="bar-item"><label><span>Електрокотел</span><span id="saveEl">—</span></label><div class="bar-track"><div class="bar-fill el"></div></div></div>
+            <div class="bar-item"><label><span>Тепловий насос</span><span id="saveHp">—</span></label><div class="bar-track"><div class="bar-fill hp"></div></div></div>
+          </div>
+        </div>
+        <div class="savings-result">
+          <div class="section-label">Ваша економія</div>
+          <div class="savings-num" id="saveTotal">—</div>
+          <p style="color:var(--ink-soft)">на сезон порівняно з газом</p>
+          <a href="#catalog" class="btn btn-blue" style="margin-top:24px">Обрати насос</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="section-label">Відгуки</div>
+        <h2 class="section-title">Реальні історії клієнтів</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review reveal">
+          <div class="review-stars">★★★★★</div>
+          <p>«Aquaviva AVH15S — найкраще рішення для нашого будинку 140 м². Рахунок за електрику впав утричі. Монтаж за 2 дні, все працює ідеально.»</p>
+          <div class="review-author"><div class="avatar">ІК</div><div><strong>Ігор К.</strong><span>Київська обл. · AVH15S</span></div></div>
+        </div>
+        <div class="review reveal">
+          <div class="review-stars">★★★★★</div>
+          <p>«Comfort 7 — ідеально для дачі 70 м². Тихий, компактний, доставили за 2 дні. Менеджер допоміг з вибором потужності — супер сервіс!»</p>
+          <div class="review-author"><div class="avatar">ОМ</div><div><strong>Олена М.</strong><span>Львів · Comfort 7</span></div></div>
+        </div>
+        <div class="review reveal">
+          <div class="review-stars">★★★★★</div>
+          <p>«Перейшли з газу — жодного жалю. Немає запаху, платимо менше, влітку ще й охолоджує. Рекомендую OneTech!»</p>
+          <div class="review-author"><div class="avatar">ВП</div><div><strong>Василь П.</strong><span>Одеса · Comfort 13</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Часті запитання</h2>
+      </div>
+      <div class="faq reveal">
+        <div class="faq-item"><button class="faq-q">При якій температурі працює насос?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>До −25°C. При сильному морозі продуктивність трохи знижується, але опалення продовжує працювати.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Чи є безкоштовна доставка?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Так, доставка по всій Україні безкоштовна. Відправка протягом 1–3 робочих днів.</p></div></div>
+        <div class="faq-item"><button class="faq-q">Як оплатити?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>На карту, безготівковий розрахунок або оплата при отриманні (накладений платіж).</p></div></div>
+        <div class="faq-item"><button class="faq-q">Хто встановлює?<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6-6-6"/></svg></button><div class="faq-a"><p>Ми організуємо монтаж сертифікованими фахівцями у вашому регіоні. Вартість розраховується індивідуально.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order" class="order-section">
+    <div class="container order-grid">
+      <div class="order-info reveal">
+        <div class="section-label" style="color:#7dd3fc">Замовлення</div>
+        <h2>Залиште заявку — передзвонимо за 15 хвилин</h2>
+        <p>Допоможемо підібрати модель, розрахуємо потужність і організуємо доставку безкоштовно.</p>
+        <ul class="order-features">
+          <li>Безкоштовна консультація інженера</li>
+          <li>Доставка 1–3 дні по Україні</li>
+          <li>Офіційна гарантія виробника</li>
+          <li>Монтаж під ключ</li>
+        </ul>
+      </div>
+      <form class="order-form reveal" id="orderForm">
+        <div class="form-row"><label for="name">Ваше ім'я *</label><input type="text" id="name" required placeholder="Олександр"></div>
+        <div class="form-row"><label for="phone">Телефон *</label><input type="tel" id="phone" required placeholder="+380 XX XXX XX XX"></div>
+        <div class="form-row"><label for="model">Модель</label><select id="model"><option value="">Потрібна консультація</option></select></div>
+        <div class="form-row"><label for="message">Коментар</label><textarea id="message" placeholder="Площа будинку, місто..."></textarea></div>
+        <button type="submit" class="btn btn-primary btn-block">Отримати пропозицію</button>
+        <p class="form-note">Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних</p>
+        <div class="form-success" id="formOk">✅ Заявку надіслано! Ми передзвонимо найближчим часом.</div>
+        <div class="form-error" id="formErr"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo"><img src="img/logo.png" alt="OneTech"></a>
+          <p>Преміальні теплові насоси для дому. Офіційні бренди, безкоштовна доставка, гарантія.</p>
+        </div>
+        <div>
+          <h4>Каталог</h4>
+          <ul>
+            <li><a href="#catalog">Aquaviva</a></li>
+            <li><a href="#catalog">Aquajoy Comfort</a></li>
+            <li><a href="#catalog">Aquajoy Plus</a></li>
+            <li><a href="#catalog">Fairland</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакти</h4>
+          <ul>
+            <li><a href="tel:0800300144">0 800 300 144</a></li>
+            <li><a href="tel:0683949600">068 39 49 600</a></li>
+            <li><a href="viber://chat?number=+380963949600">Viber</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 OneTech. Теплові насоси для дому. Всі права захищені.</div>
+    </div>
+  </footer>
+
+  <div class="modal-bg" id="productModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h2 class="section-title" id="modalTitle" style="font-size:1.35rem;margin:0"></h2>
+        <button class="modal-close" aria-label="Закрити">×</button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+          <div class="modal-thumbs" id="modalThumbs"></div>
+        </div>
+        <div>
+          <div class="price-row" id="modalPrice"></div>
+          <ul class="modal-specs" id="modalSpecs"></ul>
+          <button class="btn btn-primary btn-block" id="modalOrder">Замовити зараз</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="float-actions">
+    <a href="viber://chat?number=+380963949600" class="float-btn float-viber">Viber</a>
+    <a href="tel:0800300144" class="float-btn float-call" aria-label="Дзвінок">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    </a>
+  </div>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
