@@ -35,16 +35,21 @@
     <div class="container order-grid">
       <div class="order-info">
         <div class="section-label" style="color:#7dd3fc">Замовлення</div>
-        <h2>Залиште заявку на цю модель</h2>
-        <p>Передзвонимо за 15 хвилин та уточнимо деталі доставки.</p>
+        <h2>Замовити цю модель</h2>
+        <p>Залиште ім'я та телефон — передзвонимо та уточнимо доставку.</p>
       </div>
       <form class="order-form" id="orderForm">
-        <div class="form-row"><label for="name">Ваше ім'я *</label><input type="text" id="name" required></div>
-        <div class="form-row"><label for="phone">Телефон *</label><input type="tel" id="phone" required placeholder="+380 XX XXX XX XX"></div>
-        <div class="form-row"><label for="model">Модель</label><select id="model"><option value="">Оберіть модель</option></select></div>
-        <div class="form-row"><label for="message">Коментар</label><textarea id="message"></textarea></div>
-        <button type="submit" class="btn btn-primary btn-block">Надіслати заявку</button>
-        <div class="form-success" id="formOk">✅ Заявку надіслано в Telegram!</div>
+        <p class="form-lead">Достатньо імені та телефону — решту узгодимо під час дзвінка.</p>
+        <div class="form-row"><label for="name">Як до вас звертатися? *</label><input type="text" id="name" required placeholder="Олександр" autocomplete="name"></div>
+        <div class="form-row"><label for="phone">Ваш телефон *</label><input type="tel" id="phone" required placeholder="+380 67 123 45 67" autocomplete="tel"></div>
+        <div class="order-model-hint show" id="modelHint">
+          <span>Цікавить: <strong id="modelHintText"></strong></span>
+        </div>
+        <input type="hidden" id="model" value="">
+        <div class="form-row form-row-optional"><label for="message">Місто або коментар <span class="label-muted">(необов'язково)</span></label><textarea id="message" placeholder="Коли зручно передзвонити?"></textarea></div>
+        <button type="submit" class="btn btn-primary btn-block" data-submit-label="Передзвоніть мені">Передзвоніть мені</button>
+        <p class="form-note">Передзвонимо протягом 15 хвилин</p>
+        <div class="form-success" id="formOk">✅ Дякуємо! Ми передзвонимо найближчим часом.</div>
         <div class="form-error" id="formErr"></div>
       </form>
     </div>

@@ -779,6 +779,57 @@ section { padding: clamp(80px, 12vw, 140px) 0; }
   background: var(--white);
 }
 .form-row textarea { min-height: 100px; resize: vertical; }
+
+.form-lead {
+  margin: 0 0 22px;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.label-muted {
+  font-weight: 400;
+  color: var(--ink-muted);
+}
+
+.form-row-optional label { color: var(--ink-soft); }
+
+.order-model-hint {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  background: var(--blue-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.order-model-hint.show,
+.order-model-hint:not([hidden]) {
+  display: flex;
+}
+
+.order-model-clear {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(12, 27, 46, 0.06);
+  color: var(--ink-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.order-model-clear:hover {
+  background: rgba(12, 27, 46, 0.1);
+  color: var(--ink);
+}
 .form-note { font-size: 0.72rem; color: var(--ink-muted); text-align: center; margin-top: 16px; }
 .form-success {
   display: none;

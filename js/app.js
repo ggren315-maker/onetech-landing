@@ -195,11 +195,35 @@ function bindCards(selector) {
   });
 }
 
+function setOrderModel(label) {
+  const input = document.getElementById('model');
+  const hint = document.getElementById('modelHint');
+  const text = document.getElementById('modelHintText');
+  if (!input) return;
+  input.value = label || '';
+  if (hint && text) {
+    if (label) {
+      text.textContent = label;
+      hint.hidden = false;
+      hint.classList.add('show');
+    } else {
+      hint.hidden = true;
+      hint.classList.remove('show');
+      text.textContent = '';
+    }
+  }
+}
+
+function clearOrderModel() {
+  setOrderModel('');
+}
+
 function openOrder(id) {
   const p = PRODUCTS.find(x => x.id === id);
   if (!p) return;
-  document.getElementById('model').value = `${shortName(p.name)} — ${formatPrice(p.price)}`;
+  setOrderModel(shortName(p.name));
   document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('phone')?.focus();
 }
 
 function setModalImage(src) {
@@ -247,14 +271,44 @@ function closeModal() {
   document.body.style.overflow = '';
 }
 
-function fillSelect() {
-  const sel = document.getElementById('model');
-  if (!sel) return;
-  PRODUCTS.forEach(p => {
-    const o = document.createElement('option');
-    o.value = `${shortName(p.name)} — ${formatPrice(p.price)}`;
-    o.textContent = shortName(p.name);
-    sel.appendChild(o);
+function initForm() {
+  const form = document.getElementById('orderForm');
+  if (!form) return;
+
+  document.getElementById('modelHintClear')?.addEventListener('click', clearOrderModel);
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const ok = document.getElementById('formOk');
+    const err = document.getElementById('formErr');
+    const btn = form.querySelector('[type=submit]');
+    const submitLabel = btn.dataset.submitLabel || btn.textContent;
+    ok.classList.remove('show');
+    err.classList.remove('show');
+
+    const modelValue = document.getElementById('model').value.trim();
+    const payload = {
+      name: document.getElementById('name').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      model: modelValue || 'Потрібна консультація — підберемо модель',
+      message: document.getElementById('message').value.trim() || '—',
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Відправляємо...';
+
+    try {
+      await submitLead(payload);
+      ok.classList.add('show');
+      form.reset();
+      clearOrderModel();
+    } catch (ex) {
+      err.textContent = ex.message;
+      err.classList.add('show');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = submitLabel;
+    }
   });
 }
 
@@ -267,42 +321,6 @@ async function submitLead(data) {
   const body = await res.json();
   if (!res.ok) throw new Error(body.error || 'Помилка відправки');
   return body;
-}
-
-function initForm() {
-  const form = document.getElementById('orderForm');
-  if (!form) return;
-
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const ok = document.getElementById('formOk');
-    const err = document.getElementById('formErr');
-    const btn = form.querySelector('[type=submit]');
-    ok.classList.remove('show');
-    err.classList.remove('show');
-
-    const payload = {
-      name: document.getElementById('name').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      model: document.getElementById('model').value,
-      message: document.getElementById('message').value.trim(),
-    };
-
-    btn.disabled = true;
-    btn.textContent = 'Відправляємо...';
-
-    try {
-      await submitLead(payload);
-      ok.classList.add('show');
-      form.reset();
-    } catch (ex) {
-      err.textContent = ex.message;
-      err.classList.add('show');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Отримати пропозицію';
-    }
-  });
 }
 
 function calcSavings() {
@@ -403,14 +421,16 @@ function initProductPage() {
   });
 
   document.getElementById('pgOrder').addEventListener('click', () => {
-    location.href = `index.html?order=${id}#order`;
+    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('phone')?.focus();
   });
+
+  setOrderModel(title);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.dataset.page === 'product') {
     initProductPage();
-    fillSelect();
     initForm();
     return;
   }
@@ -420,7 +440,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderMosaic();
   renderKit();
   initHeroSlider();
-  fillSelect();
   calcSavings();
   initFAQ();
   initForm();
