@@ -32,29 +32,35 @@ function discountPercent(price, oldPrice) {
   return Math.round((1 - price / oldPrice) * 100);
 }
 
-function getAllGalleryPhotos() {
-  const items = [];
-  const seen = new Set();
-
-  const add = (src, title, id, kit = false) => {
-    if (!src || seen.has(src)) return;
-    seen.add(src);
-    items.push({ src, title, id, kit });
-  };
-
-  PRODUCTS.forEach(p => {
-    add(p.image, shortName(p.name), p.id);
-    (p.gallery || []).forEach(g => add(g, shortName(p.name), p.id));
-  });
-
-  getKitItems().forEach(k => add(k.img, k.title, null, true));
-
-  return items;
+function productExtras(name) {
+  const m = name.match(/,\s*(.+)$/);
+  return m ? m[1] : null;
 }
 
+function imageFilename(url) {
+  return (url || '').split('/').pop()?.split('?')[0] || '';
+}
+
+const JUNK_IMAGE_RE = /hqdefault|35156_35157_35158_mainpic|inner_structure_outdoor_unit/i;
+const MAX_GALLERY = 4;
+
 function getProductGallery(p) {
-  const imgs = p.gallery?.length ? p.gallery : [p.image];
-  return [...new Set([p.image, ...imgs])];
+  const candidates = [p.image, ...(p.gallery || [])];
+  const seen = new Set();
+  const out = [];
+
+  for (const src of candidates) {
+    if (!src) continue;
+    const key = imageFilename(src);
+    if (seen.has(key)) continue;
+    const isMain = src === p.image || out.length === 0;
+    if (!isMain && JUNK_IMAGE_RE.test(key)) continue;
+    seen.add(key);
+    out.push(src);
+    if (out.length >= MAX_GALLERY) break;
+  }
+
+  return out.length ? out : [p.image];
 }
 
 let currentFilter = 'all';
@@ -83,7 +89,7 @@ function cardHTML(p, featured = false) {
           </div>
         </div>
         <div class="product-actions">
-          <a href="product.html?id=${p.id}" class="btn btn-outline btn-sm btn-block">Характеристики</a>
+          <a href="product.html?id=${p.id}" class="btn btn-outline btn-sm btn-block">Деталі</a>
           <button class="btn btn-primary btn-sm btn-block order-btn" data-id="${p.id}">Консультація</button>
         </div>
       </div>
@@ -126,41 +132,17 @@ function renderCatalog() {
   observeReveal();
 }
 
-function renderMosaic() {
-  const el = document.getElementById('photoMosaic');
-  if (!el) return;
-  const photos = getAllGalleryPhotos();
-
-  el.innerHTML = photos.map(item => `
-    <div class="mosaic-item ${item.kit ? 'kit-item' : ''}" data-id="${item.id || ''}">
-      <img src="${item.src}" alt="${item.title}" loading="lazy">
-      <div class="mosaic-label">${item.title}</div>
-    </div>`).join('');
-
-  const countEl = document.getElementById('galleryCount');
-  if (countEl) countEl.textContent = `${photos.length} фото в галереї`;
-
-  el.querySelectorAll('.mosaic-item[data-id]').forEach(item => {
-    if (!item.dataset.id) return;
-    item.addEventListener('click', () => { location.href = `product.html?id=${item.dataset.id}`; });
+function bindCards(selector) {
+  document.querySelectorAll(`${selector} .order-btn`).forEach(btn => {
+    btn.addEventListener('click', e => { e.preventDefault(); openOrder(+btn.dataset.id); });
   });
-}
-
-function renderKit() {
-  const el = document.getElementById('kitGrid');
-  if (!el) return;
-  el.innerHTML = getKitItems().map(k => `
-    <div class="kit-card">
-      <img src="${k.img}" alt="${k.title}" loading="lazy">
-      <div class="kit-card-body"><h4>${k.title}</h4><p>${k.desc}</p></div>
-    </div>`).join('');
 }
 
 function initHeroSlider() {
   const imgs = SITE_GALLERY.hero;
   const slide = document.querySelector('[data-hero-slide]');
   const thumbs = document.getElementById('heroThumbs');
-  if (!slide || !thumbs) return;
+  if (!slide || !thumbs || !imgs?.length) return;
 
   slide.src = imgs[0];
   slide.alt = 'Тепловий насос';
@@ -173,7 +155,9 @@ function initHeroSlider() {
     btn.addEventListener('click', () => setHeroSlide(+btn.dataset.i));
   });
 
-  heroTimer = setInterval(() => setHeroSlide((heroIndex + 1) % imgs.length), 4500);
+  if (imgs.length > 1) {
+    heroTimer = setInterval(() => setHeroSlide((heroIndex + 1) % imgs.length), 4500);
+  }
 }
 
 function setHeroSlide(i) {
@@ -182,12 +166,6 @@ function setHeroSlide(i) {
   const slide = document.querySelector('[data-hero-slide]');
   if (slide) slide.src = imgs[i];
   document.querySelectorAll('.hero-thumb').forEach((t, j) => t.classList.toggle('active', j === i));
-}
-
-function bindCards(selector) {
-  document.querySelectorAll(`${selector} .order-btn`).forEach(btn => {
-    btn.addEventListener('click', e => { e.preventDefault(); openOrder(+btn.dataset.id); });
-  });
 }
 
 function setOrderModel(label) {
@@ -226,51 +204,6 @@ function openOrder(id) {
   } else {
     location.href = `contact.html?order=${id}`;
   }
-}
-
-function setModalImage(src) {
-  document.getElementById('modalImg').src = src;
-  document.querySelectorAll('.modal-thumb').forEach(t => {
-    t.classList.toggle('active', t.querySelector('img').src === src);
-  });
-}
-
-function openModal(id) {
-  const p = PRODUCTS.find(x => x.id === id);
-  if (!p) return;
-  const title = shortName(p.name);
-  const gallery = getProductGallery(p);
-
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalImg').src = gallery[0];
-  document.getElementById('modalPrice').innerHTML = `
-    <span class="price-now">${formatPrice(p.price)}</span>
-    ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}`;
-
-  document.getElementById('modalThumbs').innerHTML = gallery.map((src, i) => `
-    <button class="modal-thumb ${i === 0 ? 'active' : ''}" type="button">
-      <img src="${src}" alt="">
-    </button>`).join('');
-
-  document.getElementById('modalThumbs').querySelectorAll('.modal-thumb').forEach(btn => {
-    btn.addEventListener('click', () => setModalImage(btn.querySelector('img').src));
-  });
-
-  document.getElementById('modalSpecs').innerHTML = `
-    <li><span>Бренд</span><span>${BRANDS[p.brand]}</span></li>
-    <li><span>Потужність</span><span>${p.power} кВт</span></li>
-    <li><span>Фото</span><span>${gallery.length} зображень</span></li>
-    <li><span>Доставка</span><span>Безкоштовна по Україні</span></li>
-    <li><span>Гарантія</span><span>Офіційна від виробника</span></li>`;
-
-  document.getElementById('modalOrder').onclick = () => { closeModal(); openOrder(id); };
-  document.getElementById('productModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  document.getElementById('productModal')?.classList.remove('open');
-  document.body.style.overflow = '';
 }
 
 function initForm() {
@@ -358,12 +291,13 @@ function pickCardHTML(item) {
   return `
     <article class="pick-card ${item.main ? 'pick-card-main' : ''}">
       <span class="pick-tag">${item.tag}</span>
+      <img class="pick-card-img" src="${p.image}" alt="${title}" loading="lazy">
       <div class="pick-card-brand">${BRANDS[p.brand]}</div>
       <h4>${title}</h4>
       <div class="pick-card-meta">${p.power} кВт · ${formatPrice(p.price)}</div>
       <div class="pick-card-actions">
         <a href="product.html?id=${p.id}" class="btn btn-ghost btn-sm">Деталі</a>
-        <button type="button" class="btn btn-primary btn-sm pick-order-btn" data-id="${p.id}">Замовити</button>
+        <button type="button" class="btn btn-primary btn-sm pick-order-btn" data-id="${p.id}">Консультація</button>
       </div>
     </article>`;
 }
@@ -467,29 +401,46 @@ function initCatalogNav() {
   });
   document.getElementById('search')?.addEventListener('input', renderCatalog);
   document.getElementById('sort')?.addEventListener('change', renderCatalog);
-  document.getElementById('productModal')?.addEventListener('click', e => {
-    if (e.target.id === 'productModal') closeModal();
-  });
-  document.querySelector('.modal-close')?.addEventListener('click', closeModal);
+}
+
+function productSpecsHTML(p) {
+  const extras = productExtras(p.name);
+  const rows = [
+    ['Бренд', BRANDS[p.brand] || p.brand],
+    ['Потужність', `${p.power} кВт`],
+    ['Тип', 'Інверторний, повітря–вода'],
+    ['Доставка', 'Безкоштовна по Україні'],
+    ['Гарантія', 'Офіційна від виробника'],
+  ];
+  if (extras) rows.splice(3, 0, ['Комплектація', extras]);
+  return rows.map(([k, v]) => `<li><span>${k}</span><span>${v}</span></li>`).join('');
 }
 
 function initProductPage() {
   const params = new URLSearchParams(location.search);
   const id = +params.get('id');
   const p = PRODUCTS.find(x => x.id === id);
-  if (!p) { document.getElementById('productContent').innerHTML = '<p>Товар не знайдено. <a href="index.html">На головну</a></p>'; return; }
+  if (!p) {
+    document.getElementById('productContent').innerHTML =
+      '<p class="product-not-found">Модель не знайдена. <a href="catalog.html">Повернутися до каталогу</a></p>';
+    return;
+  }
 
   const gallery = getProductGallery(p);
   const title = shortName(p.name);
+  const thumbsHTML = gallery.length > 1
+    ? `<div class="product-gallery-thumbs" id="pgThumbs">${gallery.map((s, i) => `
+        <button class="gallery-thumb ${i ? '' : 'active'}" type="button"><img src="${s}" alt="" loading="lazy"></button>`).join('')}
+      </div>`
+    : '';
 
   document.title = `${title} — OneTech`;
   document.getElementById('productContent').innerHTML = `
+    <nav class="product-breadcrumb"><a href="catalog.html">Каталог</a><span>${title}</span></nav>
     <div class="product-page-grid">
-      <div>
+      <div class="product-gallery">
         <div class="product-gallery-main"><img id="pgMain" src="${gallery[0]}" alt="${title}"></div>
-        <div class="product-gallery-thumbs" id="pgThumbs">${gallery.map((s, i) => `
-          <button class="modal-thumb ${i ? '' : 'active'}" type="button"><img src="${s}" alt=""></button>`).join('')}
-        </div>
+        ${thumbsHTML}
       </div>
       <div class="product-info-panel">
         <div class="product-brand">${BRANDS[p.brand]}</div>
@@ -498,24 +449,21 @@ function initProductPage() {
           <span class="price-now">${formatPrice(p.price)}</span>
           ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
         </div>
-        <ul class="modal-specs">
-          <li><span>Потужність</span><span>${p.power} кВт</span></li>
-          <li><span>Тип</span><span>Інверторний, повітря–вода</span></li>
-          <li><span>Доставка</span><span>Безкоштовна</span></li>
-          <li><span>Фото</span><span>${gallery.length} зображень</span></li>
-        </ul>
+        <ul class="product-specs">${productSpecsHTML(p)}</ul>
         <button class="btn btn-primary btn-block" id="pgOrder" style="margin-top:20px">Консультація</button>
-        <a href="catalog.html" class="card-link" style="display:block;text-align:center;margin-top:14px">← Каталог</a>
+        <a href="pick.html" class="card-link" style="display:block;text-align:center;margin-top:14px">Підібрати за площею</a>
       </div>
     </div>`;
 
-  document.getElementById('pgThumbs').querySelectorAll('.modal-thumb').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.getElementById('pgMain').src = btn.querySelector('img').src;
-      document.getElementById('pgThumbs').querySelectorAll('.modal-thumb').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  if (gallery.length > 1) {
+    document.getElementById('pgThumbs').querySelectorAll('.gallery-thumb').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.getElementById('pgMain').src = btn.querySelector('img').src;
+        document.getElementById('pgThumbs').querySelectorAll('.gallery-thumb').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
     });
-  });
+  }
 
   document.getElementById('pgOrder').addEventListener('click', () => {
     location.href = `contact.html?order=${id}`;

@@ -5,14 +5,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/teplovoj-nasos-dlja-doma-aquaviva-plus-avh-tpvh60-5-88-kvt.html",
     "image": "https://aquafamily.ua/media/catalog/product/p/o/pompa_01-16.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/p/o/pompa_01-16.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_32_76.jpg",
-      "https://aquafamily.ua/media/catalog/product/1/_/1_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/2/_/2_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/_/3_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/_/4_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/5/_/5_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/i/n/inner_structure_outdoor_unit_.jpg"
+      "https://aquafamily.ua/media/catalog/product/p/o/pompa_01-16.jpg"
     ],
     "price": 144630,
     "oldPrice": 170154,
@@ -27,14 +20,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/teplovoj-nasos-dlja-doma-aquaviva-plus-avh-tpvh160-15-57-kvt.html",
     "image": "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_32_79.jpg",
-      "https://aquafamily.ua/media/catalog/product/1/_/1_1_1_1_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/2/_/2_1_1_1_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/_/3_1_1_1_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/_/4_1_1_1_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/5/_/5_1_1_1_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/i/n/inner_structure_outdoor_unit__1_1_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg"
     ],
     "price": 272207,
     "oldPrice": 286534,
@@ -49,14 +35,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-18-18-kvt-cirkuljacionnyj-nasos-trehhodovoj-klapan.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_7.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42375_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg"
     ],
     "price": 233174,
     "oldPrice": null,
@@ -71,14 +50,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/teplovoj-nasos-aquaviva-avh-15s-teplo-holod-gvs-15-kvt-220-v.html",
     "image": "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42386_42385_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42375_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg"
     ],
     "price": 158079,
     "oldPrice": 210772,
@@ -93,14 +65,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-15-15-kvt.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42386_42385_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery.jpg"
     ],
     "price": 210772,
     "oldPrice": null,
@@ -116,13 +81,7 @@ const PRODUCTS = [
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
     "gallery": [
       "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_12.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery.jpg"
     ],
     "price": 215234,
     "oldPrice": null,
@@ -137,14 +96,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-9-9-kvt-cirkuljacionnyj-nasos.html",
     "image": "https://aquafamily.ua/media/catalog/product/c/o/comfort_9.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/c/o/comfort_9.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_9.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/c/o/comfort_9.jpg"
     ],
     "price": 161414,
     "oldPrice": null,
@@ -159,14 +111,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-7-7-kvt-cirkuljacionnyj-nasos.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42386_42385_gallery.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42386_42385_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_8.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42386_42385_gallery.jpg"
     ],
     "price": 121072,
     "oldPrice": null,
@@ -181,14 +126,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-7-7-kvt-cirkuljacionnyj-nasos-trehhodovoj-klapan.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_13.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg"
     ],
     "price": 125534,
     "oldPrice": null,
@@ -203,14 +141,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-15-15-kvt-cirkuljacionnyj-nasos-trehhodovoj-klapan.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_6.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg",
-      "https://aquafamily.ua/media/catalog/product/p/o/pompa_01-16.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg"
     ],
     "price": 215234,
     "oldPrice": null,
@@ -225,14 +156,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-13-13-kvt-cirkuljacionnyj-nasos-trehhodovoj-klapan.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_2.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_5.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/c/o/comfort_9.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_2.jpg"
     ],
     "price": 179354,
     "oldPrice": null,
@@ -247,14 +171,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-10-10-kvt-cirkuljacionnyj-nasos-trehhodovoj-klapan.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_4.jpg",
-      "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/p/o/pompa_01-16.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42386_42385_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42375_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg"
     ],
     "price": 161414,
     "oldPrice": null,
@@ -269,14 +186,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-10-10-kvt.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_2.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery.jpg"
     ],
     "price": 156952,
     "oldPrice": null,
@@ -291,14 +201,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-18t-18-kvt.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_3.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/c/o/comfort_9.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_2.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg"
     ],
     "price": 224204,
     "oldPrice": null,
@@ -314,13 +217,7 @@ const PRODUCTS = [
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery_1.jpg",
     "gallery": [
       "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/c/o/comfort_9.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/p/o/pompa_01-16.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_2.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery.jpg"
     ],
     "price": 170384,
     "oldPrice": null,
@@ -335,14 +232,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-13t-13-kvt-cirkuljacionnyj-nasos.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42375_gallery.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42375_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_10.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42386_42385_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42375_gallery.jpg"
     ],
     "price": 179354,
     "oldPrice": null,
@@ -357,14 +247,7 @@ const PRODUCTS = [
     "url": "https://aquafamily.ua/invertornyj-teplovoj-nasos-dlja-doma-aquajoy-comfort-17t-17-kvt-cirkuljacionnyj-nasos.html",
     "image": "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg",
     "gallery": [
-      "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/h/q/hqdefault_69_11.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
-      "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_1.jpg"
+      "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg"
     ],
     "price": 224204,
     "oldPrice": null,
@@ -380,9 +263,6 @@ const PRODUCTS = [
     "image": "https://aquafamily.ua/media/catalog/product/1/1/11-13.01.jpg",
     "gallery": [
       "https://aquafamily.ua/media/catalog/product/1/1/11-13.01.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_2.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1_1.jpg",
-      "https://aquafamily.ua/media/catalog/product/3/5/35156_35157_35158_mainpic_1.jpg",
       "https://aquafamily.ua/media/catalog/product/4/2/42325_00.jpg"
     ],
     "price": 220754,
@@ -485,9 +365,9 @@ const PRODUCTS = [
 ];
 const SITE_GALLERY = {
   "hero": [
-    "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg",
     "https://aquafamily.ua/media/catalog/product/p/o/pompa_01-16.jpg",
-    "https://aquafamily.ua/media/catalog/product/c/o/comfort_9.jpg",
+    "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg",
+    "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg",
     "https://aquafamily.ua/media/catalog/product/1/1/11-13.01.jpg"
   ],
   "install": [
@@ -497,31 +377,5 @@ const SITE_GALLERY = {
     "https://aquafamily.ua/media/wysiwyg/bufer.png",
     "https://aquafamily.ua/media/wysiwyg/klapan.png",
     "https://aquafamily.ua/media/wysiwyg/podstavki_dla_teplovih.png"
-  ],
-  "allProducts": [
-    "https://aquafamily.ua/media/catalog/product/p/o/pompa_01-16.jpg",
-    "https://aquafamily.ua/media/catalog/product/1/2/1200_2_2_3.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery_1.jpg",
-    "https://aquafamily.ua/media/catalog/product/2/3/23080_1_2_new_1.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_1.jpg",
-    "https://aquafamily.ua/media/catalog/product/c/o/comfort_9.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42386_42385_gallery.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42381_42384_gallery.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_2.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42372_42373_gallery_1.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42378_42383_gallery_2.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42317_42371_gallery_1.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42375_gallery.jpg",
-    "https://aquafamily.ua/media/catalog/product/4/2/42382_gallery.jpg",
-    "https://aquafamily.ua/media/catalog/product/1/1/11-13.01.jpg",
-    "https://aquafamily.ua/media/catalog/product/a/q/aquajoy_plus_9_13.jpg",
-    "https://aquafamily.ua/media/catalog/product/a/q/aquajoy_plus_9_13_1.jpg",
-    "https://aquafamily.ua/media/catalog/product/a/q/aquajoy_plus_9_13_1_1.jpg",
-    "https://aquafamily.ua/media/catalog/product/a/q/aquajoy_plus_16_20.jpg",
-    "https://aquafamily.ua/media/catalog/product/a/q/aquajoy_plus_16_20_1.jpg",
-    "https://aquafamily.ua/media/catalog/product/p/o/pompa_mob_1_1_ua-16.jpg"
   ]
 };

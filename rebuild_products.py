@@ -64,8 +64,16 @@ for p in products:
                 seen.add(key)
                 unique.append(hd)
         if unique:
-            p['gallery'] = unique[:8]
-            p['image'] = unique[0]
+            filtered = []
+            for hd in unique:
+                name = hd.rsplit('/', 1)[-1]
+                if re.search(r'hqdefault|35156_35157_35158_mainpic|inner_structure_outdoor_unit', name, re.I):
+                    continue
+                if re.match(r'^[1-5]_1_1(_1)*\.jpg$', name, re.I):
+                    continue
+                filtered.append(hd)
+            p['gallery'] = (filtered or unique)[:4]
+            p['image'] = p['gallery'][0]
         print(f"#{p['id']:2d} {p['image'].split('/')[-1]:30s} gallery={len(p['gallery'])}")
         time.sleep(0.25)
     except Exception as e:
