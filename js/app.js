@@ -71,9 +71,9 @@ function cardHTML(p, featured = false) {
   const title = shortName(p.name);
 
   return `
-    <article class="product-card reveal ${featured ? 'featured' : ''}" data-id="${p.id}" data-brand="${p.brand}">
+    <article class="product-card ${featured ? 'featured' : ''}" data-id="${p.id}" data-brand="${p.brand}">
       <a href="product.html?id=${p.id}" class="product-img">
-        <img src="${p.image}" alt="${title}" loading="lazy">
+        <img src="${p.image}" alt="${title}" loading="${featured ? 'eager' : 'lazy'}" decoding="async">
       </a>
       <div class="product-body">
         <div class="product-brand">${BRANDS[p.brand] || p.brand}</div>
@@ -118,7 +118,11 @@ function getFiltered() {
 function renderFeatured() {
   const picks = [4, 1, 8].map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
   const el = document.getElementById('featuredGrid');
-  if (el) { el.innerHTML = picks.map(p => cardHTML(p, true)).join(''); bindCards('#featuredGrid'); }
+  if (el) {
+    el.innerHTML = picks.map(p => cardHTML(p, true)).join('');
+    bindCards('#featuredGrid');
+    observeReveal();
+  }
 }
 
 function renderCatalog() {
